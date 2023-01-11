@@ -29,17 +29,11 @@ function addTask() {
     addButtonDelete.classList.add("container_list_task--delete");
     addButtonDelete.addEventListener("click", supprElement);
 
+    // permet la modification d'une tâche déjà créée
+    addButtonModified.addEventListener("click", modifiedElement)
+
     // permet de reset l'input une fois la tache ajoutée
     formElt.reset();
-
-    const modifiedButton = document.querySelector('.container_list_task--modified');
-
-    modifiedButton.addEventListener('click', function modifiedTask() {
-        let addText = document.querySelector('.container_list_task--text');
-        let addDiv = document.querySelector(".container_list_task");
-        let newInput = document.createElement("input");
-        addDiv.replaceChildren(newInput, addDiv.childNodes[1]);
-        })
     }
 }
 
@@ -56,4 +50,10 @@ inputElt.addEventListener("keypress", function(pressEnter) {
 const supprElement = (event) =>
 {
     event.target.parentNode.remove();
+}
+
+// fonction pour modifier une tâche déjà créée
+const modifiedElement = (event) => {
+    let newInput = document.createElement("input");
+    event.target.parentNode.querySelector('.container_list_task--text').replaceWith(newInput);
 }
