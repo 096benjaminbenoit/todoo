@@ -66,6 +66,7 @@ h2 {
 .container_list_task {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     margin-top: 10px;
     background-color: white;
     width: 250px;
@@ -88,7 +89,21 @@ h2 {
 }
 
 .container_list_task--text {
-    font-size: 14px;
+    font-size: 13px;
     text-indent: 15px;
     color: black;
+}
+
+.container_list_task--delete {
+    height: 20px;
+    width: 20px;
+    background-color: #DB6A8F;
+    border: none;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.container_list_task--delete:hover {
+    background-color: #CA3C66;
+    cursor: pointer;
 }
