@@ -27,6 +27,7 @@ function addTask() {
     let addButtonDelete = document.createElement("button");
     addDiv.append(addButtonDelete);
     addButtonDelete.classList.add("container_list_task--delete");
+    addButtonDelete.addEventListener("click", supprElement);
 
     // permet de reset l'input une fois la tache ajoutée
     formElt.reset();
@@ -50,3 +51,9 @@ inputElt.addEventListener("keypress", function(pressEnter) {
         pressEnter.preventDefault();
     }
 });
+
+// fonction pour supprimer via le boutton 
+const supprElement = (event) =>
+{
+    event.target.parentNode.remove();
+}
