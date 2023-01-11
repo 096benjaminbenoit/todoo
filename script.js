@@ -29,11 +29,12 @@ function addTask() {
     addButtonDelete.classList.add("container_list_task--delete");
     addButtonDelete.addEventListener("click", supprElement);
 
-    // permet la modification d'une tâche déjà créée
-    addButtonModified.addEventListener("click", modifiedElement)
-
     // permet de reset l'input une fois la tache ajoutée
     formElt.reset();
+
+    // transform la div en input grace a notre fontions modifElement
+    addButtonModified.addEventListener("click", modifiedElement)
+
     }
 }
 
@@ -52,8 +53,23 @@ const supprElement = (event) =>
     event.target.parentNode.remove();
 }
 
-// fonction pour modifier une tâche déjà créée
-const modifiedElement = (event) => {
-    let newInput = document.createElement("input");
+// fonction modifier il cible le parents du texte qui est donc la div 
+const modifiedElement = (event) => 
+{
+    const newInput = document.createElement("input");
     event.target.parentNode.querySelector('.container_list_task--text').replaceWith(newInput);
+
+    newInput.addEventListener("blur", (e) =>
+    {
+        const newTask = newInput.value ;
+        const textContainer = document.createElement("p");
+        textContainer.classList.add("container_list_task--text") ;
+        textContainer.innerText = newTask ;
+        newInput.replaceWith(textContainer) ;
+    } )
+
+
+    // newInput.classList.add("container_list_task--newImput")
+    // const newImputElt = document.querySelector(".container_list_task--newImput")
+    // console.log (newImputElt);
 }
